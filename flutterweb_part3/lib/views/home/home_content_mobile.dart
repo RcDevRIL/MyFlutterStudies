@@ -11,6 +11,9 @@ class HomeContentMobile extends StatelessWidget {
       mainAxisSize: MainAxisSize.max,
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
+        RaisedButton(
+          onPressed: () => Scaffold.of(context).openDrawer(),
+        ),
         CourseDetails(),
         SizedBox(
           height: 100,
