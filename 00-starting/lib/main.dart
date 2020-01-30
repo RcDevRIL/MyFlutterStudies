@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:the_basics/routing/route_names.dart';
+import 'package:the_basics/routing/router.dart';
+import 'package:the_basics/services/navigation_service.dart';
 import 'package:the_basics/views/layout_template/layout_template.dart';
 
 import 'locator.dart';
@@ -17,7 +20,12 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         textTheme: Theme.of(context).textTheme.apply(fontFamily: 'Open Sans'),
       ),
-      home: LayoutTemplate(),
+      builder: (context, child) => LayoutTemplate(
+        child: child,
+      ),
+      navigatorKey: locator<NavigationService>().navigatorKey,
+      onGenerateRoute: generateRoute,
+      initialRoute: HomeRoute,
     );
   }
 }

@@ -5,8 +5,10 @@ import 'package:the_basics/views/about/about_view.dart';
 import 'package:the_basics/views/episode_details/episode_details.dart';
 import 'package:the_basics/views/episodes/episodes_view.dart';
 import 'package:the_basics/views/home/home_view.dart';
+import 'package:the_basics/extensions/string_extensions.dart';
 
 Route<dynamic> generateRoute(RouteSettings settings) {
+  var routingData = settings.name.routingData;
   switch (settings.name) {
     case HomeRoute:
       return _getPageRoute(HomeView(), settings);
@@ -15,7 +17,10 @@ Route<dynamic> generateRoute(RouteSettings settings) {
     case EpisodesRoute:
       return _getPageRoute(EpisodesView(), settings);
     case EpisodeDetailsRoute:
-      return _getPageRoute(EpisodeDetails(), settings);
+      return _getPageRoute(
+        EpisodeDetails(id: int.tryParse(routingData['id'])),
+        settings,
+      );
     default:
       return _getPageRoute(HomeView(), settings);
   }

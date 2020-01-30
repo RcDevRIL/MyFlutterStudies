@@ -17,7 +17,17 @@ class EpisodesList extends StatelessWidget {
         spacing: 30,
         runSpacing: 30,
         children: <Widget>[
-          ...episodes.map((episode) => EpisodeItem(model: episode)).toList()
+          ...episodes
+              .asMap()
+              .map((index, episode) => MapEntry(
+                    index,
+                    GestureDetector(
+                      child: EpisodeItem(model: episode),
+                      onTap: () => model.navigateToEpisode(index),
+                    ),
+                  ))
+              .values
+              .toList()
         ],
       ),
     );
