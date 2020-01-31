@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart' show Consumer;
+import 'package:flutter_modular_tests/modules/childs/home/home_bloc.dart'
+    show HomeBloc;
+import 'package:flutter_modular_tests/modules/childs/home/home_module.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key, this.title}) : super(key: key);
@@ -10,14 +14,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,16 +27,17 @@ class _HomePageState extends State<HomePage> {
             Text(
               'You have pushed the button this many times:',
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
+            Consumer<HomeBloc>(
+                builder: (context, value) => Text(
+                      '${value.counter}',
+                      style: Theme.of(context).textTheme.headline4,
+                    )),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
         tooltip: 'Increment',
+        onPressed: () => HomeModule.to.get<HomeBloc>().increment(),
         child: Icon(Icons.add),
       ),
     );
