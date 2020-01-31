@@ -11,6 +11,7 @@ class AppWidget extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blueGrey,
       ),
+      navigatorKey: Modular.navigatorKey,
     );
   }
 }
