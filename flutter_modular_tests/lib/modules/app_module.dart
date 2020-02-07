@@ -7,7 +7,7 @@ import 'package:flutter_modular_tests/modules/pages/init_page.dart';
 
 class AppModule extends MainModule {
   @override
-  // Insert here any bloc, dependency to inject in this module
+  // Insert here any bloc, dependency, service to inject in this module
   List<Bind> get binds => [
         Bind((i) => ApplicationInitializationBloc()),
       ];
