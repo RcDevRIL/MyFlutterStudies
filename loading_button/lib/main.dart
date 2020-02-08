@@ -73,22 +73,75 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
-class CustomLoadingButton extends StatelessWidget {
-  const CustomLoadingButton({
+class CustomLoadingButton extends StatefulWidget {
+  final Widget child;
+
+  CustomLoadingButton({
     Key key,
+    this.child = const Text(
+      'My button is awesome',
+      softWrap: false,
+    ),
   }) : super(key: key);
 
   @override
+  _CustomLoadingButtonState createState() => _CustomLoadingButtonState();
+}
+
+class _CustomLoadingButtonState extends State<CustomLoadingButton> {
+  double _width = 250;
+  bool _isCollapsed = false;
+  ShapeBorder _shapeBorder;
+
+  @override
+  void initState() {
+    super.initState();
+    _shapeBorder = RoundedRectangleBorder();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return RaisedButton(
-      onPressed: () {},
-      color: Colors.blueGrey,
-      elevation: 2.0,
-      focusElevation: 1.0,
-      hoverColor: Colors.lightBlueAccent,
-      shape: RoundedRectangleBorder(),
-      textColor: Colors.white,
-      child: Text('My button is awesome'),
+    return AnimatedContainer(
+      duration: Duration(milliseconds: 250),
+      curve: Curves.easeIn,
+      width: _width,
+      constraints: BoxConstraints(
+        maxHeight: 50.0,
+      ),
+      child: RaisedButton(
+        onPressed: () {
+          setState(() {
+            if (_isCollapsed) {
+              _width = 250.0;
+              _shapeBorder = RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(0.0),
+                side: BorderSide(
+                  style: BorderStyle.solid,
+                  color: Colors.black26,
+                  width: 1.0,
+                ),
+              );
+            } else {
+              _width = 50.0;
+              _shapeBorder = CircleBorder(
+                side: BorderSide(
+                  color: Colors.black26,
+                  style: BorderStyle.solid,
+                  width: 1.0,
+                ),
+              );
+            }
+            _isCollapsed = !_isCollapsed;
+          });
+        },
+        color: Colors.blueGrey,
+        elevation: 2.0,
+        focusElevation: 1.0,
+        hoverColor: Colors.lightBlueAccent,
+        shape: _shapeBorder,
+        textColor: Colors.white,
+        child: _isCollapsed ? CircularProgressIndicator() : widget.child,
+      ),
     );
   }
 }
