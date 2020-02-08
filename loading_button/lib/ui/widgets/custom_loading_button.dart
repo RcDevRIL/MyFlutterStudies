@@ -1,9 +1,31 @@
 import 'package:flutter/material.dart';
 
 class CustomLoadingButton extends StatefulWidget {
+  final String buttonText;
+  final double width;
+  final double height;
+  final IconData iconAfterComplete;
+  final Color textColor;
+  final Color beginBackgroundColor;
+  final Color endBackgroundColor;
+  final Color iconColor;
+  final Color borderColor;
+
   CustomLoadingButton({
     Key key,
-  }) : super(key: key);
+    @required this.buttonText,
+    this.height = 40.0,
+    this.width = 250.0,
+    this.iconAfterComplete = Icons.check,
+    this.textColor = const Color(0xFFFFFFFF),
+    @required this.beginBackgroundColor,
+    this.endBackgroundColor = const Color(0xFF607D8B),
+    this.iconColor = const Color(0xFFFFFFFF),
+    this.borderColor = const Color(0x42000000),
+  })  : // Minimum size for [CircularProgressIndicator] to fit in [CircleBorder]
+        //is 75.0 width, 40.0 height (after first tests), so we don't want to break animation
+        assert(width >= 75.0 && height >= 40.0),
+        super(key: key);
 
   @override
   _CustomLoadingButtonState createState() => _CustomLoadingButtonState();
@@ -11,32 +33,45 @@ class CustomLoadingButton extends StatefulWidget {
 
 class _CustomLoadingButtonState extends State<CustomLoadingButton>
     with TickerProviderStateMixin {
-  /// Used to perform animation on this Button
+  /// Used to perform animation on this [Button]
   AnimationController animationController;
 
-  /// Used to manipulate width value for our Button
+  /// Used to manipulate width value for this [Button]
   Animation<double> widthAnimation;
+
+  /// Used to manipulate [backgroundColor] value for this [Button]
+  /// TODO add support for a third Color -if wanted by user- that could be used when Icon is shown.
+  Animation<Color> backgroundColorAnimation;
 
   /// Used to track whether this button is collapsed or not
   bool _isCollapsed = false;
 
-  /// Used to manipulate the border that is applied to this Button
+  /// Used to manipulate the [Border] that is applied to this [Button]
   ShapeBorder _shapeBorder;
 
-  /// Used to manipulate the child of this button
+  /// Used to manipulate the child of this [Button]
   Widget child;
 
   @override
   void initState() {
     super.initState();
+
     animationController = AnimationController(
       duration: Duration(
         milliseconds: 250,
       ),
       vsync: this,
     );
+    backgroundColorAnimation = ColorTween(
+      begin: widget.beginBackgroundColor,
+      //if [endBackgroundColor] is not set, use [beginBackgroundColor] as default.
+      end: widget.endBackgroundColor ?? widget.beginBackgroundColor,
+    ).animate(animationController)
+      ..addListener(() {
+        setState(() {});
+      });
     widthAnimation = Tween<double>(
-      begin: 250.0,
+      begin: widget.width,
       end: 75.0,
     ).animate(animationController)
       ..addListener(() {
@@ -44,12 +79,15 @@ class _CustomLoadingButtonState extends State<CustomLoadingButton>
       })
       ..addStatusListener((status) {
         if (status == AnimationStatus.completed) {
-          //After animation is completed I wanted to add a Check icon, direct implementation is to wait 2sec and then set the state of child Widget
+          //After animation is completed I wanted to add an icon, direct implementation is to wait 2sec and then set the state of child Widget
           Future.delayed(Duration(seconds: 2)).then((value) {
-            setState(() => child = Icon(
-                  Icons.check,
-                  color: Colors.brown[25], //Don't ask me why this color :D
-                ));
+            setState(() {
+              if (_isCollapsed)
+                child = Icon(
+                  widget.iconAfterComplete,
+                  color: widget.iconColor,
+                );
+            });
           });
         }
       });
@@ -57,12 +95,12 @@ class _CustomLoadingButtonState extends State<CustomLoadingButton>
       borderRadius: BorderRadius.circular(20.0),
       side: BorderSide(
         style: BorderStyle.solid,
-        color: Colors.black26,
+        color: widget.borderColor,
         width: 1.0,
       ),
     );
     child = Text(
-      'My button is awesome',
+      widget.buttonText,
       softWrap: false,
     );
   }
@@ -73,10 +111,7 @@ class _CustomLoadingButtonState extends State<CustomLoadingButton>
       duration: Duration(milliseconds: 250),
       curve: Curves.easeIn,
       width: widthAnimation.value,
-      constraints: BoxConstraints(
-        maxHeight: 50.0,
-      ),
-      height: 40.0,
+      height: widget.height,
       child: RaisedButton(
         onPressed: () {
           setState(() {
@@ -92,13 +127,13 @@ class _CustomLoadingButtonState extends State<CustomLoadingButton>
                   borderRadius: BorderRadius.circular(20.0),
                   side: BorderSide(
                     style: BorderStyle.solid,
-                    color: Colors.black26,
+                    color: widget.borderColor,
                     width: 1.0,
                   ),
                 );
                 //Also waiting to shift child, so Text is not truncated too long
                 child = Text(
-                  'My button is awesome',
+                  widget.buttonText,
                   softWrap: false,
                 );
               });
@@ -106,14 +141,14 @@ class _CustomLoadingButtonState extends State<CustomLoadingButton>
               animationController.forward();
               _shapeBorder = CircleBorder(
                 side: BorderSide(
-                  color: Colors.black26,
+                  color: widget.borderColor,
                   style: BorderStyle.solid,
                   width: 1.0,
                 ),
               );
               child = CircularProgressIndicator(
                 valueColor: AlwaysStoppedAnimation<Color>(
-                  Colors.black45,
+                  widget.borderColor,
                 ),
                 strokeWidth: 3.0,
               );
@@ -121,11 +156,11 @@ class _CustomLoadingButtonState extends State<CustomLoadingButton>
             _isCollapsed = !_isCollapsed;
           });
         },
-        color: Colors.blueGrey,
+        color: backgroundColorAnimation.value,
         elevation: 2.0,
         focusElevation: 1.0,
         shape: _shapeBorder,
-        textColor: Colors.brown[25],
+        textColor: widget.textColor,
         child: child,
       ),
     );
