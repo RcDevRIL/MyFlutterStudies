@@ -5,6 +5,7 @@ import 'package:flutter_modular_tests/widgets/navbar_item/navbar_item_desktop.da
 import 'package:flutter_modular_tests/widgets/navbar_item/navbar_item_mobile.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
+import 'package:flutter_modular_tests/extensions/hoverextension_widget.dart';
 
 class NavBarItem extends StatelessWidget {
   final String title;
@@ -28,7 +29,7 @@ class NavBarItem extends StatelessWidget {
         child: ScreenTypeLayout(
           tablet: NavBarItemTabletDesktop(),
           mobile: NavBarItemMobile(),
-        ) /* .showCursorOnHover.moveUpOnHover */,
+        ).showCursorOnHover.moveUpOnHover,
       ),
     );
   }

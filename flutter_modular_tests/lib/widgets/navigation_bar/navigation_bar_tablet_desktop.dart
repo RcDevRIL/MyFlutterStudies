@@ -19,11 +19,11 @@ class NavigationBarTabletDesktop extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                NavBarItem('Episodes', '/episodes'),
+                NavBarItem('My Widgets', '/widgets'),
                 SizedBox(
                   width: 60,
                 ),
-                NavBarItem('About', '/about'),
+                NavBarItem('My Studies', '/studies'),
                 SizedBox(
                   width: 60,
                 ),

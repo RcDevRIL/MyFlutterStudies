@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'dart:html' as html;
 
-import 'package:the_basics/widgets/translate_on_hover.dart';
+import 'package:flutter_modular_tests/widgets/hover_translation_widget.dart';
 
 extension HoverExtensions on Widget {
-  static final appContainer =
-      html.window.document.getElementById('app-container');
+  static final appContainer = html.window.document
+      .getElementById('app-container'); // à rajouter dans index.html!!
 
   Widget get showCursorOnHover {
     return MouseRegion(

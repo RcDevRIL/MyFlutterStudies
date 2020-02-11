@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular_tests/widgets/navigation_bar/navigation_bar.dart';
+import 'package:flutter_modular_tests/widgets/navigation_drawer/navigation_drawer.dart';
 import 'package:responsive_builder/responsive_builder.dart';
-import 'package:the_basics/widgets/centered_view/centered_view.dart';
-import 'package:the_basics/widgets/navigation_bar/navigation_bar.dart';
-import 'package:the_basics/widgets/navigation_drawer/navigation_drawer.dart';
 
 class LayoutTemplate extends StatelessWidget {
   final Widget child;
@@ -16,7 +15,7 @@ class LayoutTemplate extends StatelessWidget {
             ? NavigationDrawer()
             : null,
         backgroundColor: Colors.white,
-        body: CenteredView(
+        body: Center(
           child: Column(
             children: <Widget>[
               NavigationBar(),
