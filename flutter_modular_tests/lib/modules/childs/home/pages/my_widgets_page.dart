@@ -3,6 +3,10 @@ import 'package:flutter_modular_tests/widgets/custom_loading_button.dart';
 import 'package:flutter_modular_tests/widgets/navigation_bar/navigation_bar.dart';
 import 'package:flutter_modular_tests/widgets/navigation_drawer/navigation_drawer.dart';
 
+/// Simple Page that show some Widgets I have implemented.
+///
+/// @author RcDevRIL
+/// @version 0.1.2
 class MyWidgetsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

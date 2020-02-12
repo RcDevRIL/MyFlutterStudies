@@ -6,6 +6,10 @@ enum ApplicationInitializationEvent {
   initialized,
 }
 
+/// Simple Bloc to demonstrate the capabilities of the [flutter_bloc](https://www.pub.dev/packages/flutter_bloc) package.
+///
+/// @author RcDevRIL
+/// @version 0.1.1-RELEASE
 class ApplicationInitializationBloc
     extends Bloc<ApplicationInitializationEvent, ApplicationInitializationState>
     with ChangeNotifier {

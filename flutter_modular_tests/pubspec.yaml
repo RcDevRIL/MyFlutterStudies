@@ -2,7 +2,7 @@ name: flutter_modular_tests
 description: A Flutter app showcasing some of my personal code written during tutorials or personal experiments!
 repository: https://www.github.com/rcdevril/MyFlutterStudies.git
 
-version: 0.1.1
+version: 0.1.2
 
 environment:
   sdk: ">=2.7.0 <3.0.0"

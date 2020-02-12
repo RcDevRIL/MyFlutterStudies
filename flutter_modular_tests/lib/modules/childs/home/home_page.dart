@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular_tests/widgets/navigation_bar/navigation_bar.dart';
 import 'package:flutter_modular_tests/widgets/navigation_drawer/navigation_drawer.dart';
 
+/// Simple Page that welcome users.
+///
+/// @author RcDevRIL
+/// @version 0.1.2
 class HomePage extends StatefulWidget {
   HomePage({Key key, this.title}) : super(key: key);
 

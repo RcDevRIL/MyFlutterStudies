@@ -5,6 +5,12 @@ import 'package:flutter_modular_tests/modules/app_widget.dart';
 import 'package:flutter_modular_tests/modules/childs/home/home_module.dart';
 import 'package:flutter_modular_tests/modules/pages/init_page.dart';
 
+/// MainModule of this application. This will initialize our app with [flutter_modular](https:/www.pub.dev/packages/flutter_modular)
+/// Here is binded a bloc implementation that handles the initialization of the app and make visual feedback from it
+/// (Mocked for now with linear progress bar)
+///
+/// @author RcDevRIL
+/// @version 0.1.1-RELEASE
 class AppModule extends MainModule {
   @override
   // Insert here any bloc, dependency, service to inject in this module

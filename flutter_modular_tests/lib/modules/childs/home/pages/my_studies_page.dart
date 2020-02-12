@@ -6,6 +6,10 @@ import 'package:flutter_modular_tests/widgets/navigation_bar/navigation_bar.dart
 import 'package:flutter_modular_tests/widgets/navigation_drawer/navigation_drawer.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
+/// Simple Page that shows some real case examples.
+///
+/// @author RcDevRIL
+/// @version 0.1.2
 class MyStudiesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
