@@ -1,4 +1,4 @@
-# MyFlutterStudiesApp - README V0.1.0
+# MyFlutterStudiesApp - README V0.1.1
 __Build status__
 _//**TODO**_
 
@@ -18,7 +18,7 @@ You will find here a [Flutter] application in which I will put some relevant sou
 *Feel free to look inside this repository to see how this framework is awesome !*
 ## Getting Started
 
-This README will guide you through the setup and deployment of this application on a virtual device (or physical if you have one).
+This README will guide you through the setup and deployment of this application.
 ##### Prerequisites
 
 What things you need to install and how to install them
@@ -41,17 +41,19 @@ Now you can consider building and running the app :upside_down_face:
 
 To start build-install-run process, execute this command:
 
-`flutter run`
+`flutter run -d "web server"`
 
 This will install the app on the connected device and run it. 
 
-_If you have a real device, just plug it to the computer using your USB cable. The Flutter plugin should notice the device and will automatically add it on the list._
+*(I used `-d chrome` most of the time.)*
 
-To start building the release .apk file, consider using this command:
+_If you have a real device, just plug it to the computer using your USB cable. The Flutter plugin should notice the device and will automatically add it on the list. Select the device, then launch flutter run command without any flags!_
 
-`flutter build apk --release --split-per-abi`
+To start building the release version of the website, consider using this command:
 
-This command will output several apks in the `/build/app/outputs/apk/release/` folder of your local repository. Choose the one that better fits your device architecture. 
+`flutter build web --release`
+
+This command will output in the `/build/web/` folder of your local repository. 
 ## Run Unit Tests
 
 _This paragraph explain how to trigger tests written in the **[test]** folder of this repository._
@@ -105,7 +107,7 @@ See also the list of [contributors] who participated in this project.
 This project is licensed under the GNU GENERAL PUBLIC LICENSE - see the [LICENSE.md] file for details
 
 ## Disclaimer
-This app was developped under **Web** platform, I may check for other platforms later if app maturity demands it, but anyway it should work without changes! :+1:
+This app was developped under **Web** platform (Chrome and Mozilla), I may check for other platforms later if app maturity demands it, but anyway it should work without changes! :+1:
 
 [Flutter "get started"]: https://flutter.dev/get-started/
 [Flutter]: https://github.com/flutter/flutter
