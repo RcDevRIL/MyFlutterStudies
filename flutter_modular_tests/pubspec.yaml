@@ -1,7 +1,8 @@
 name: flutter_modular_tests
-description: A new Flutter project to test flutter_modular package.
+description: A Flutter app showcasing some of my personal code written during tutorials or personal experiments!
+repository: https://www.github.com/rcdevril/MyFlutterStudies.git
 
-version: 0.0.1+1
+version: 0.1.1
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
@@ -30,9 +31,3 @@ flutter:
   uses-material-design: true
   assets:
     - assets/img/icons/flutter_logo.png
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
-
-  # An image asset can refer to one or more resolution-specific "variants", see
-  # https://flutter.dev/assets-and-images/#resolution-aware.
