@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular_tests/widgets/navigation_bar/navigation_bar.dart';
+import 'package:flutter_modular_tests/widgets/navigation_drawer/navigation_drawer.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key, this.title}) : super(key: key);
@@ -12,12 +14,28 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return Center(
-        child: Text(
-      'Welcome on MyFlutterStudiesApp!!',
-      style: Theme.of(context).textTheme.headline1.copyWith(
-            fontSize: 22.0,
+    return SafeArea(
+      child: Scaffold(
+        drawer: NavigationDrawer(),
+        backgroundColor: Colors.white,
+        body: Center(
+          child: Column(
+            children: <Widget>[
+              NavigationBar(),
+              Expanded(
+                child: Center(
+                  child: Text(
+                    'Welcome on MyFlutterStudiesApp!!',
+                    style: Theme.of(context).textTheme.headline1.copyWith(
+                          fontSize: 22.0,
+                        ),
+                  ),
+                ),
+              ),
+            ],
           ),
-    ));
+        ),
+      ),
+    );
   }
 }
