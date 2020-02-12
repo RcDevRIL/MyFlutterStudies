@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_modular_tests/models/navbar_item_model.dart';
-import 'package:flutter_modular_tests/widgets/navbar_item/navbar_item_desktop.dart';
 import 'package:flutter_modular_tests/widgets/navbar_item/navbar_item_mobile.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
@@ -27,7 +26,7 @@ class NavBarItem extends StatelessWidget {
       child: Provider.value(
         value: model,
         child: ScreenTypeLayout(
-          tablet: NavBarItemTabletDesktop(),
+          tablet: NavBarItemMobile(),
           mobile: NavBarItemMobile(),
         ).showCursorOnHover.moveUpOnHover,
       ),

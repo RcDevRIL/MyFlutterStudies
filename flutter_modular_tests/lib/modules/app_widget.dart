@@ -7,7 +7,7 @@ class AppWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: '/',
+      initialRoute: Modular.initialRoute,
       onGenerateRoute: Modular.generateRoute,
       title: 'Flutter Demo for flutter_modular package',
       theme: ThemeData(
@@ -15,10 +15,7 @@ class AppWidget extends StatelessWidget {
       ),
       navigatorKey: Modular.navigatorKey,
       builder: (context, child) => Scaffold(
-        drawer:
-            /* sizingInformation.deviceScreenType == DeviceScreenType.Mobile
-            ?  */
-            NavigationDrawer(),
+        drawer: NavigationDrawer(),
         backgroundColor: Colors.white,
         body: Center(
           child: Column(

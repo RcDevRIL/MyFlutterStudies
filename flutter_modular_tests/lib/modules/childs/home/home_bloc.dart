@@ -6,4 +6,9 @@ class HomeBloc extends ChangeNotifier {
     counter++;
     notifyListeners();
   }
+
+  decrement() {
+    counter--;
+    notifyListeners();
+  }
 }

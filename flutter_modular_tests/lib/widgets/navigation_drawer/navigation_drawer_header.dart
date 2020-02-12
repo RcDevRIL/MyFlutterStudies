@@ -7,20 +7,26 @@ class NavigationDrawerHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 150,
-      color: Colors.white,
+      color: Colors.blueGrey,
       alignment: Alignment.center,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           Text(
-            'SKILL UP NOW',
+            'MyFlutterStudiesApp',
             style: TextStyle(
-                fontSize: 18, fontWeight: FontWeight.w800, color: Colors.white),
+              fontSize: 18,
+              fontWeight: FontWeight.w800,
+              color: Colors.white70,
+            ),
+          ),
+          SizedBox(
+            height: 6.0,
           ),
           Text(
-            'TAP HERE',
+            'Welcome and learn with me !',
             style: TextStyle(
-              color: Colors.white,
+              color: Colors.white70,
             ),
           )
         ],
